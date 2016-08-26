@@ -50,7 +50,6 @@ let tryMapMenu node =
         let r = mapMenuEntry node
         Some r
     with _ -> 
-        printfn "FAIL"
         None
 
 let menyEntries node =
