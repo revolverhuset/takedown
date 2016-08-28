@@ -5,6 +5,8 @@
     "compilerName": "fsc",
     "compile": {
       "includeFiles": [
+        "Parsing.fs",
+        "Http.fs",
         "HtmlAgilityPack.FSharp.fs",
         "takedown.fs"
       ]

@@ -1,39 +1,21 @@
+#if INTERACTIVE
+//hacky run dotnet publish for fsi to find dlls
+#I"bin/Debug/netcoreapp1.0/publish/"
+#r"HtmlAgilityPack.CssSelectors.NetCore.dll"
+#r"HtmlAgilityPack.NetCore.dll"
+#r"System.Net.Http.dll"
+#r"Newtonsoft.Json.dll"
+#load"Parsing.fs"
+#load"Http.fs"
+#load"HtmlAgilityPack.FSharp.fs"
+#endif
+
+
 open HtmlAgilityPack;
-open System.Net.Http;
-open System.Text.RegularExpressions;
 open Newtonsoft.Json;
 open HtmlAgilityPack.FSharp
-
-let selectNodes (path : string) (node : HtmlNode) =
-    node.SelectNodes(path) |> Seq.cast<HtmlNode>
-
-let fetchAsync (url : string) = async {
-    let http = new HttpClient()
-    let! html = http.GetStringAsync url |> Async.AwaitTask
-    return html}
-
-//let fetch (url : string) =
-//    fetchAsync url |> Async.RunSynchronously
-
-let (|Regex|_|) pattern input =
-    let m = Regex.Match(input, pattern)
-    if m.Success then Some(List.tail [ for g in m.Groups -> g.Value ])
-    else None
-
-let tryParseInt str =
-    match System.Int32.TryParse(str) with
-    | (true, int) -> Some int
-    | _ -> None
-let parseInt str = System.Int32.Parse str
-
-let tryParseDecimal str =
-    match System.Decimal.TryParse(str) with
-    | (true, decimal) -> Some decimal
-    | _ -> None
-
-let (|Int|_|) str = tryParseInt
-let (|Decimal|_|) str = tryParseDecimal
-
+open Parsing;
+open Http;
 
 type MenuEntry = { Number : int; Name : string;  Price : decimal}
 type MenuCategory = { Name : string; Entries : seq<MenuEntry> }
@@ -62,13 +44,11 @@ let mapMenuEntry node =
 
 
 let menyEntries node =
+    let xpath = "//div[@data-is-row='true']//div[@class='richtextContent clearfix']"
+    let menuItemNodes = node |> selectNodes xpath
     { 
         Name = ""
-        Entries =  
-            node
-            |> selectNodes "//div[@data-is-row='true']//div[@class='richtextContent clearfix']"
-            |> Seq.choose mapMenuEntry
-            |> Seq.sortBy (fun x -> x.Number)
+        Entries =  menuItemNodes |> Seq.choose mapMenuEntry |> Seq.sortBy (fun x -> x.Number)
     }
     
 let menyUrls doc = 

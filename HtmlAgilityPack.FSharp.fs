@@ -96,3 +96,6 @@ let createDoc html =
     let doc = new HtmlDocument()
     doc.LoadHtml html
     doc.DocumentNode
+
+let selectNodes (path : string) (node : HtmlNode) =
+    node.SelectNodes(path) |> Seq.cast<HtmlNode>
