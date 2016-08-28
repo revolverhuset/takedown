@@ -15,29 +15,60 @@ let fetchAsync (url : string) = async {
 //let fetch (url : string) =
 //    fetchAsync url |> Async.RunSynchronously
 
+let (|Regex|_|) pattern input =
+    let m = Regex.Match(input, pattern)
+    if m.Success then Some(List.tail [ for g in m.Groups -> g.Value ])
+    else None
+
+let tryParseInt str =
+    match System.Int32.TryParse(str) with
+    | (true, int) -> Some int
+    | _ -> None
+let parseInt str = System.Int32.Parse str
+
+let tryParseDecimal str =
+    match System.Decimal.TryParse(str) with
+    | (true, decimal) -> Some decimal
+    | _ -> None
+
+let (|Int|_|) str = tryParseInt
+let (|Decimal|_|) str = tryParseDecimal
+
+
 type MenuEntry = { Number : int; Name : string;  Price : decimal}
 type MenuCategory = { Name : string; Entries : seq<MenuEntry> }
 
-//ugly
-let mapMenuEntry (node : HtmlNode) =
-    let m = new Regex("^\[(?<number>\d*?)\](?<name>.*)")
-    let nameblock = (node |> descendants "b" |> Seq.head).InnerText
-    let nameMatch = m.Match(nameblock)
-    let price = (node |> descendants "b" |> Seq.skip 1 |> Seq.head).InnerText
-    //let desc = (node |> descendants "i"  |> Seq.head).InnerText.Replace("\n", "")
-    {
-        Number = System.Int32.Parse(nameMatch.Groups.["number"].Value)
-        Name = nameMatch.Groups.["name"].Value.Trim()
-        //Description = desc.Trim()
-        Price = System.Decimal.Parse(price.Trim().Replace(",-", " "))
-    }
+let mapMenuItemHeader (b : HtmlNode) =
+    let inner =  b.InnerText.Trim();
+    match inner with
+    | Regex "^\[(\d*?)\](.*)" [number; name] -> Some(parseInt number, name)
+    | _ -> None
 
-let tryMapMenu node =
-    try
-        let r = mapMenuEntry node
-        Some r
-    with _ -> 
-        None
+let hasRealContent (x : string) = 
+    let c = System.String.IsNullOrWhiteSpace(x.Trim())
+    not c
+
+let hasText (node : HtmlNode) = hasRealContent node.InnerText 
+
+let parsePrice (node : HtmlNode) =
+    tryParseDecimal (node.InnerText.Replace(",-","").Trim())
+
+//ugly
+let mapMenuEntry node =
+    if not (hasText node) then None
+    else
+    let bs = node |> descendants "b"
+    if Seq.isEmpty bs then None
+    else
+    let k = bs |> Seq.skip 1 |> Seq.head
+    let price = 
+        match parsePrice k with
+        |Some x -> x
+        |None -> 0M
+    match mapMenuItemHeader (Seq.head bs) with
+    | Some (number, name) -> Some { Number = number; Name = name; Price = price }
+    | None -> None
+
 
 let menyEntries node =
     { 
@@ -45,7 +76,7 @@ let menyEntries node =
         Entries =  
             node
             |> selectNodes "//div[@data-is-row='true']//div[@class='richtextContent clearfix']"
-            |> Seq.choose tryMapMenu
+            |> Seq.choose mapMenuEntry
             |> Seq.sortBy (fun x -> x.Number)
     }
     
