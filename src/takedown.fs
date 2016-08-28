@@ -19,12 +19,12 @@ open Parsing;
 open Http;
 
 type MenuEntry = { Number : int; Name : string;  Price : decimal}
-type MenuCategory = { Name : string; Entries : seq<MenuEntry> }
+type MenuCategory = { Category : string; Entries : seq<MenuEntry> }
 
 let mapMenuItemHeader (b : HtmlNode) =
     let inner =  b.InnerText.Trim();
     match inner with
-    | Regex "^\[(\d*?)\](.*)" [number; name] -> Some(parseInt number, name)
+    | Regex "^\[(\d*?)\](.*)" [number; name] -> Some(parseInt number, name.Trim())
     | _ -> None
 
 let parsePrice (node : HtmlNode) =
@@ -45,10 +45,11 @@ let mapMenuEntry node =
 
 
 let menyEntries node =
+    let xpathCategory = "//div[@class='box box_3']//div[@align='center']"
     let xpath = "//div[@data-is-row='true']//div[@class='richtextContent clearfix']"
     let menuItemNodes = node |> selectNodes xpath
     { 
-        Name = ""
+        Category = (node |> selectNodes xpathCategory |> Seq.head).InnerText.Trim()
         Entries =  menuItemNodes |> Seq.choose mapMenuEntry |> Seq.sortBy (fun x -> x.Number)
     }
     
