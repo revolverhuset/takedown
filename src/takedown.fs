@@ -13,6 +13,7 @@
 
 open HtmlAgilityPack;
 open Newtonsoft.Json;
+open Newtonsoft.Json.Serialization;
 open HtmlAgilityPack.FSharp
 open Parsing;
 open Http;
@@ -83,7 +84,8 @@ let takeDown () =
     crawl ["/meny/forretter/"] []
 
 let toJson x =
-   Newtonsoft.Json.JsonConvert.SerializeObject(x, Newtonsoft.Json.Formatting.Indented)
+   let settings = new JsonSerializerSettings ( ContractResolver = new CamelCasePropertyNamesContractResolver())
+   JsonConvert.SerializeObject(x, Formatting.Indented, settings)
 
 [<EntryPoint>]
 let main argv = 
