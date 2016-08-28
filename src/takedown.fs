@@ -42,7 +42,7 @@ let mapMenuEntry node =
     | _ -> None
 
 
-let menyEntries node =
+let menuEntries node =
     let xpathCategory = "//div[@class='box box_3']//div[@align='center']"
     let xpath = "//div[@data-is-row='true']//div[@class='richtextContent clearfix']"
     let menuItemNodes = node |> selectNodes xpath
@@ -91,7 +91,7 @@ let main argv =
     let menu =
         takeDown () 
         |> Seq.map (fun (_, doc) -> doc) 
-        |> Seq.map menyEntries
+        |> Seq.map menuEntries
         |> toJson
     printfn "%s" menu
     0 
