@@ -2,23 +2,10 @@ open HtmlAgilityPack;
 open System.Net.Http;
 open System.Text.RegularExpressions;
 open Newtonsoft.Json;
-
-let createHtml (x : string) = 
-    let doc = new HtmlAgilityPack.HtmlDocument();
-    doc.LoadHtml x
-    doc
-
-let createNode (x : string) = 
-    (createHtml x).DocumentNode
+open HtmlAgilityPack.FSharp
 
 let selectNodes (path : string) (node : HtmlNode) =
     node.SelectNodes(path) |> Seq.cast<HtmlNode>
-
-let descendants (name : string) (node : HtmlNode) = 
-    node.Descendants name
-
-let inline attr name (node : HtmlNode) = 
-    node.GetAttributeValue(name, "")
 
 let fetchAsync (url : string) = async {
     let http = new HttpClient()
@@ -70,9 +57,6 @@ let menyUrls doc =
 
 let baseUrl = "http://takesushi.no"
 
-//let takeFetch relative = 
-//    fetch (baseUrl + relative) |> createNode 
-
 let takeDown () =
     let rec crawl visit found =
         if Seq.isEmpty visit then found
@@ -83,7 +67,7 @@ let takeDown () =
                 |> Seq.except visited 
                 |> Seq.map (fun x -> async {
                      let! content = fetchAsync (baseUrl + x)
-                     return (x, content |> createNode) })
+                     return (x, content |> createDoc) })
                 |> Async.Parallel
                 |> Async.RunSynchronously
                 |> Seq.toList
