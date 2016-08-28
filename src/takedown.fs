@@ -29,19 +29,15 @@ let mapMenuItemHeader (b : HtmlNode) =
 
 let parsePrice (node : HtmlNode) =
     match node.InnerText with
-    | Regex "(\d+)" [price] -> Some (System.Decimal.Parse price) 
-    | _ -> None
+    | Regex "(\d+)" [price] -> System.Decimal.Parse price
+    | _ -> 0m
 
 let mapMenuEntry node =
     let bs = node |> descendants "b" |> Seq.toList
     match bs with
     | headerNode::priceNode::_ ->
-        let price = 
-            match parsePrice priceNode with
-            | Some x -> x
-            | None -> 0M
         match mapMenuItemHeader headerNode with
-        | Some (number, name) -> Some { Number = number; Name = name; Price = price }
+        | Some (number, name) -> Some { Number = number; Name = name; Price = parsePrice priceNode }
         | None -> None
     | _ -> None
 
