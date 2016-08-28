@@ -87,10 +87,8 @@ let toJson x =
 let main argv = 
     let menu =
         takeDown () 
-        |> Seq.toList
         |> Seq.map (fun (_, doc) -> doc) 
         |> Seq.map menyEntries
-        |> Seq.toList
         |> toJson
     printfn "%s" menu
     0 
