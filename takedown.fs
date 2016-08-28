@@ -44,30 +44,21 @@ let mapMenuItemHeader (b : HtmlNode) =
     | Regex "^\[(\d*?)\](.*)" [number; name] -> Some(parseInt number, name)
     | _ -> None
 
-let hasRealContent (x : string) = 
-    let c = System.String.IsNullOrWhiteSpace(x.Trim())
-    not c
-
-let hasText (node : HtmlNode) = hasRealContent node.InnerText 
-
 let parsePrice (node : HtmlNode) =
     tryParseDecimal (node.InnerText.Replace(",-","").Trim())
 
-//ugly
 let mapMenuEntry node =
-    if not (hasText node) then None
-    else
-    let bs = node |> descendants "b"
-    if Seq.isEmpty bs then None
-    else
-    let k = bs |> Seq.skip 1 |> Seq.head
-    let price = 
-        match parsePrice k with
-        |Some x -> x
-        |None -> 0M
-    match mapMenuItemHeader (Seq.head bs) with
-    | Some (number, name) -> Some { Number = number; Name = name; Price = price }
-    | None -> None
+    let bs = node |> descendants "b" |> Seq.toList
+    match bs with
+    | headerNode::priceNode::_ ->
+        let price = 
+            match parsePrice priceNode with
+            | Some x -> x
+            | None -> 0M
+        match mapMenuItemHeader headerNode with
+        | Some (number, name) -> Some { Number = number; Name = name; Price = price }
+        | None -> None
+    | _ -> None
 
 
 let menyEntries node =
