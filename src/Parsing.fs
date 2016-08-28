@@ -10,7 +10,6 @@ let tryParseInt str =
     match System.Int32.TryParse(str) with
     | (true, int) -> Some int
     | _ -> None
-let parseInt str = System.Int32.Parse str
 
 let tryParseDecimal str =
     match System.Decimal.TryParse(str) with

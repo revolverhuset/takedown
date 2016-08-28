@@ -24,11 +24,13 @@ type MenuCategory = { Category : string; Entries : seq<MenuEntry> }
 let mapMenuItemHeader (b : HtmlNode) =
     let inner =  b.InnerText.Trim();
     match inner with
-    | Regex "^\[(\d*?)\](.*)" [number; name] -> Some(parseInt number, name.Trim())
+    | Regex "^\[(\d*?)\](.*)" [number; name] -> Some(System.Int32.Parse number, name.Trim())
     | _ -> None
 
 let parsePrice (node : HtmlNode) =
-    tryParseDecimal (node.InnerText.Replace(",-","").Trim())
+    match node.InnerText with
+    | Regex "(\d+)" [price] -> Some (System.Decimal.Parse price) 
+    | _ -> None
 
 let mapMenuEntry node =
     let bs = node |> descendants "b" |> Seq.toList
