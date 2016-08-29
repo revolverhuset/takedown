@@ -9,6 +9,7 @@
         "Http.fs",
         "HtmlAgilityPack.FSharp.fs",
         "Restaurants/Take.fs",
+        "Restaurants/Allehjornet.fs",
         "takedown.fs"
       ]
     }
