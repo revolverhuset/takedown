@@ -52,7 +52,7 @@ let baseUrl = "http://takesushi.no"
 let relative x = (baseUrl + x)
 let discover s = createDoc s |> menyUrls |> Seq.map relative
 let takeDown () = 
-    let pages = crawl [ (relative "/meny/forretter/") ] [] discover
+    let pages = crawl (relative "/meny/forretter/") discover
     pages 
         |> Seq.map (fun (_, doc) -> createDoc doc) 
         |> Seq.map menuEntries
