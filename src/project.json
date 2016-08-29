@@ -8,6 +8,7 @@
         "Parsing.fs",
         "Http.fs",
         "HtmlAgilityPack.FSharp.fs",
+        "Restaurants/Take.fs",
         "takedown.fs"
       ]
     }
