@@ -99,3 +99,7 @@ let createDoc html =
 
 let selectNodes (path : string) (node : HtmlNode) =
     node.SelectNodes(path) |> Seq.cast<HtmlNode>
+
+let (|SelectNodes|_|) xpath node =
+    let nodes = selectNodes xpath node
+    if (Seq.isEmpty nodes) then None else Some(nodes |> Seq.toList)

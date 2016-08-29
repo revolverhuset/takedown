@@ -41,13 +41,17 @@ let mapMenuEntry node =
         | None -> None
     | _ -> None
 
+let menuCategory node =
+    let xpath = "//div[@class='box box_3']//div[@align='center']"
+    match node with
+    | SelectNodes xpath [first] -> first.InnerText.Trim()
+    | _ -> "UNKNOWN"
 
 let menuEntries node =
-    let xpathCategory = "//div[@class='box box_3']//div[@align='center']"
     let xpath = "//div[@data-is-row='true']//div[@class='richtextContent clearfix']"
     let menuItemNodes = node |> selectNodes xpath
     { 
-        Category = (node |> selectNodes xpathCategory |> Seq.head).InnerText.Trim()
+        Category = menuCategory node
         Entries =  menuItemNodes |> Seq.choose mapMenuEntry |> Seq.sortBy (fun x -> x.Number)
     }
     
@@ -58,29 +62,9 @@ let menyUrls doc =
 
 
 let baseUrl = "http://takesushi.no"
-
-let takeDown () =
-    let rec crawl visit found =
-        if Seq.isEmpty visit then found
-        else
-            let visited = found |> Seq.map (fun (url, _) -> url)
-            let newStuff = 
-                visit 
-                |> Seq.except visited 
-                |> Seq.map (fun x -> async {
-                     let! content = fetchAsync (baseUrl + x)
-                     return (x, content |> createDoc) })
-                |> Async.Parallel
-                |> Async.RunSynchronously
-                |> Seq.toList
-
-            let urls = 
-                newStuff
-                |> Seq.map (fun (_, doc) -> doc)
-                |> Seq.map menyUrls
-                |> Seq.concat
-            crawl (urls |> Seq.except visit) (found |> Seq.append newStuff)
-    crawl ["/meny/forretter/"] []
+let relative x = (baseUrl + x)
+let discover s = createDoc s |> menyUrls |> Seq.map relative
+let takeDown () = crawl [ (relative "/meny/forretter/") ] [] discover
 
 let toJson x =
    let settings = new JsonSerializerSettings ( ContractResolver = new CamelCasePropertyNamesContractResolver())
@@ -90,7 +74,7 @@ let toJson x =
 let main argv = 
     let menu =
         takeDown () 
-        |> Seq.map (fun (_, doc) -> doc) 
+        |> Seq.map (fun (_, doc) -> createDoc doc) 
         |> Seq.map menuEntries
         |> toJson
     printfn "%s" menu
