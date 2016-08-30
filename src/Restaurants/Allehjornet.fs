@@ -34,7 +34,7 @@ type OptionToken =
 type Price = | Inside of int| TakeAway of int
 type MenuPrice = | One of Price | Two of Price * Price
 type MenuOption = { Description : string option; Price : MenuPrice}
-type MenuItem = { Name : string; Number : int; Options : list<MenuOption>}
+type MenuItem = { Name : string; Description: string option; Number : int; Options : list<MenuOption>}
 
 let rec removeMultipleSpace (x : string) =
     let n = x.Replace("  ", " ").Replace("\t", " ")
@@ -51,8 +51,12 @@ let tokenize s =
     | Regex "(.*?)kr (\d+)" [option; price] ->[In(option.Trim(), System.Int32.Parse price)]
     | _ -> failwith s
 
-let createMenuOptions tokens =
-    tokens 
+let parseOptions s =
+    Regex.Split(s, "(\( ta med kr \d+,- \))")
+    |> Array.toList 
+    |> List.filter hasContent 
+    |> List.filter (fun x -> not (x.Contains("MILD WOK")))
+    |> List.collect tokenize
     |> List.pairwise
     |> List.choose(fun (x, y) ->
         match (x, y) with
@@ -60,32 +64,26 @@ let createMenuOptions tokens =
         |In(name, price), _ -> Some (name, One(Inside(price)))
         |Out(_), _ -> None)
     |> List.map(fun (x,y) -> 
-        { 
-            Description = if hasContent x then Some x else None
-            Price = y
-        })
-
-let parseOptions s =
-    let tokens = 
-        Regex.Split(s, "(\( ta med kr \d+,- \))")
-        |> Array.toList 
-        |> List.filter hasContent 
-        |> List.filter (fun x -> not (x.Contains("MILD WOK")))
-        |> List.collect tokenize
-    createMenuOptions tokens
+    { 
+        Description = if hasContent x then Some x else None
+        Price = y
+    })
 
 let parseContent s =
     match s with
-    | Regex "(?s)^(\(.*?\))(.*)" [description; details] -> parseOptions details
-    | s -> parseOptions s
+    | Regex "(?s)^(\(.*?\))(.*)" [description; details] 
+        -> (Some description, parseOptions details)
+    | s -> (None, parseOptions s)
 
 let chunkToMenuItem chunk =
     match chunk with
     | Regex @"(?s)(\d+)\.(.*?)([\(\n].*)" [num; name; content;] -> 
+        let (description, opts) = parseContent (content.Trim())
         {
             Name = name.Trim(); 
             Number = (System.Int32.Parse num); 
-            Options = (parseContent (content.Trim()))
+            Options = opts;
+            Description = description;
         }
     | _ -> failwith ":("
 
