@@ -18,3 +18,6 @@ let tryParseDecimal str =
 
 let (|Int|_|) str = tryParseInt
 let (|Decimal|_|) str = tryParseDecimal
+
+let isNullOrEmpty s =  System.String.IsNullOrEmpty s
+let hasContent s = not (isNullOrEmpty s)

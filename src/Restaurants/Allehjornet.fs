@@ -3,6 +3,7 @@ module Restaurants.Allehjornet
 open HtmlAgilityPack;
 open HtmlAgilityPack.FSharp
 open Parsing;
+open System.Text.RegularExpressions
 
 open Http;
 
@@ -16,7 +17,7 @@ let noNbsp x = replace x "&nbsp;" " "
 
 let findOtherMenuUrls s =
     let path = "//div[@class='itemFullText']//a"
-    createDoc s 
+    createDoc s
     |> selectNodes path 
     |> Seq.map (attr "href")
     |> Seq.map idnHack
@@ -26,22 +27,85 @@ let getColumn path doc =
         |> Seq.map (fun x -> x.InnerText)
         |> Seq.map noNbsp
 
-let mapName s =
+type OptionToken = 
+| Out of int
+| In of string * int
+
+type Price = | Inside of int| TakeAway of int
+type MenuPrice = | One of Price | Two of Price * Price
+type MenuOption = { Description : string option; Price : MenuPrice}
+type MenuItem = { Name : string; Number : int; Options : list<MenuOption>}
+
+let rec removeMultipleSpace (x : string) =
+    let n = x.Replace("  ", " ").Replace("\t", " ")
+    if n = x then x else removeMultipleSpace n
+
+let trimHeader s =
+    match s with 
+    | Regex @"(?s)^.*?(\d+\..*)" [content] -> content
+    | _ -> failwith "no000"
+
+let tokenize s =
     match s with
-    | Regex "(\d+)\.(.*)" [number; name] -> System.Int32.Parse number, name.Trim()
-    | _ -> failwith "W00t"
+    | Regex "^\(.*?kr (\d+)" [price] -> [ Out(System.Int32.Parse price) ]
+    | Regex "(.*?)kr (\d+)" [option; price] ->[In(option.Trim(), System.Int32.Parse price)]
+    | _ -> failwith s
 
-let mapMenuItems doc =
-    let namesPath = "//div[@class='itemFullText']//h3"
-    let detailsPath = "//div[@class='itemFullText']//p"
-    let names = getColumn namesPath doc 
-    let details = getColumn detailsPath doc
-    details |> Seq.zip (names |> Seq.map mapName) 
+let createMenuOptions tokens =
+    tokens 
+    |> List.pairwise
+    |> List.choose(fun (x, y) ->
+        match (x, y) with
+        |In(name, price), Out(price2) -> Some (name, Two(Inside(price), TakeAway(price2)))
+        |In(name, price), _ -> Some (name, One(Inside(price)))
+        |Out(_), _ -> None)
+    |> List.map(fun (x,y) -> 
+        { 
+            Description = if hasContent x then Some x else None
+            Price = y
+        })
+
+let parseOptions s =
+    let tokens = 
+        Regex.Split(s, "(\( ta med kr \d+,- \))")
+        |> Array.toList 
+        |> List.filter hasContent 
+        |> List.filter (fun x -> not (x.Contains("MILD WOK")))
+        |> List.collect tokenize
+    createMenuOptions tokens
+
+let parseContent s =
+    match s with
+    | Regex "(?s)^(\(.*?\))(.*)" [description; details] -> parseOptions details
+    | s -> parseOptions s
+
+let chunkToMenuItem chunk =
+    match chunk with
+    | Regex @"(?s)(\d+)\.(.*?)([\(\n].*)" [num; name; content;] -> 
+        {
+            Name = name.Trim(); 
+            Number = (System.Int32.Parse num); 
+            Options = (parseContent (content.Trim()))
+        }
+    | _ -> failwith ":("
+
+let parseMenuitems s =
+    let headerless = trimHeader s
+    Regex.Split(headerless, "(?s)(\d+\..*?(?=\d+\.))") 
+        |> Array.filter hasContent 
+        |> Array.map chunkToMenuItem
     
-
-let pers () = 
+let mapMenuItems doc =
+    let path = "//div[@class='itemFullText']"
+    let content = getColumn path doc
+    content 
+    |> Seq.map removeMultipleSpace 
+    |> Seq.map parseMenuitems
+    
+let pers () =   
     let content = crawl (idnHack baseUrl) findOtherMenuUrls
     content 
     |> Seq.map (fun (url, content) -> content)
     |> Seq.map createDoc
-    |> Seq.collect mapMenuItems 
+    |> Seq.collect mapMenuItems
+    |> Seq.toList //for debug
