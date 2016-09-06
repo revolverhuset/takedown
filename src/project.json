@@ -1,46 +1,30 @@
 {
-  "version": "1.0.0-*",
-  "buildOptions": {
-    "emitEntryPoint": true,
-    "compilerName": "fsc",
-    "compile": {
-      "includeFiles": [
-        "Parsing.fs",
-        "Http.fs",
-        "HtmlAgilityPack.FSharp.fs",
-        "Restaurants/Take.fs",
-        "Restaurants/Allehjornet.fs",
-        "takedown.fs"
-      ]
-    }
-  },
-  "dependencies": {
-    "Microsoft.FSharp.Core.netcore": "1.0.0-alpha-160509",
-    "Newtonsoft.Json": "9.0.1",
-    "HtmlAgilityPack.CssSelectors.NetCore" : "1.0.0"
-  },
-  "tools": {
-    "dotnet-compile-fsc": {
-      "version": "1.0.0-preview2-*",
-      "imports": [
-        "dnxcore50",
-        "portable-net45+win81",
-        "netstandard1.3"
-      ]
-    }
-  },
-  "frameworks": {
-    "netcoreapp1.0": {
-      "dependencies": {
-        "Microsoft.NETCore.App": {
-          "type": "platform",
-          "version": "1.0.0"
+    "version": "1.0.0-*",
+    "buildOptions": {
+        "emitEntryPoint": true,
+        "compilerName": "fsc",
+        "compile": {
+            "includeFiles": [
+                "Parsing.fs",
+                "Http.fs",
+                "HtmlAgilityPack.FSharp.fs",
+                "Restaurants/Take.fs",
+                "Restaurants/Allehjornet.fs",
+                "takedown.fs"
+            ]
         }
-      },
-      "imports": [
-        "portable-net45+win8",
-        "dnxcore50"
-      ]
+    },
+    "dependencies": {
+        "Newtonsoft.Json": "9.0.1",
+        "HtmlAgilityPack": "1.4.9.5",
+        "System.Net.Http": "4.1.0"
+    },
+    "tools": {
+        "dotnet-compile-fsc": {
+            "version": "1.0.0-preview2-*"
+        }
+    },
+    "frameworks": {
+        "net45": {}
     }
-  }
 }
