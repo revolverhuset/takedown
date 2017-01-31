@@ -1,10 +1,13 @@
 #if INTERACTIVE
 //hacky run dotnet publish for fsi to find dlls
-#I"bin/Debug/netcoreapp1.0/publish/"
-#r"HtmlAgilityPack.CssSelectors.NetCore.dll"
-#r"HtmlAgilityPack.NetCore.dll"
 #r"System.Net.Http.dll"
+#I"Users/hsorbo/.nuget/packages"
+#I"/Users/hsorbo/.nuget/packages/HtmlAgilityPack.CssSelectors.NetCore/1.0.0/lib/netstandard1.5/"
+#r"HtmlAgilityPack.CssSelectors.NetCore.dll"
+#I"/Users/hsorbo/.nuget/packages/Newtonsoft.Json/9.0.1/lib/net45/"
 #r"Newtonsoft.Json.dll"
+#I"/Users/hsorbo/.nuget/packages/HtmlAgilityPack.NetCore/1.5.0.1/lib/net45/"
+#r"HtmlAgilityPack.NetCore.dll"
 #load"Parsing.fs"
 #load"Http.fs"
 #load"HtmlAgilityPack.FSharp.fs"
