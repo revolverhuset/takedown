@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp1.0</TargetFramework>
-    <Version>1.0.0-alpha</Version>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,13 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETCore.App" Version="1.0.1" />
-    <PackageReference Include="Microsoft.FSharp.Core.netcore" Version="1.0.0-alpha-161023" />
+    <PackageReference Include="Microsoft.FSharp.Core.netcore" Version="1.0.0-rc-170122" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="HtmlAgilityPack.CssSelectors.NetCore" Version="1.0.0" />
-    <PackageReference Include="System.Net.Http" Version="4.1.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.0" />
     <PackageReference Include="AngleSharp" Version="0.9.9" />
-    <PackageReference Include="FSharp.NET.Sdk" Version="1.0.0-beta-*">
+    <PackageReference Include="FSharp.NET.Sdk" Version="1.0.0-beta-*" PrivateAssets="All">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
