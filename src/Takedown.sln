@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Takedown.Tests", "Takedown.Tests\Takedown.Tests.fsproj", "{35E24EC1-913E-43BA-ACCF-7C2A8C5DF87D}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Takedown", "Takedown\Takedown.fsproj", "{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{35E24EC1-913E-43BA-ACCF-7C2A8C5DF87D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{35E24EC1-913E-43BA-ACCF-7C2A8C5DF87D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35E24EC1-913E-43BA-ACCF-7C2A8C5DF87D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
