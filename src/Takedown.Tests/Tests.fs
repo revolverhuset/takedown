@@ -1,7 +1,9 @@
 ﻿namespace Tests
 open Xunit
+open Takedown.Restaurants
 
 module Take =
     [<Fact>]
-    let ``Initial``() = 
-        Assert.False true
+    let TakeDown() = 
+        let foo = Take.takeDown ()
+        Assert.True true
