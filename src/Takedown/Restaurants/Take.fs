@@ -24,7 +24,7 @@ let mapMenuEntry node =
     match bs with
     | headerNode::priceNode::_ ->
         match mapMenuItemHeader headerNode with
-        | Some (number, name) -> Some { Number = number; Name = name; Price = parsePrice priceNode }
+        | Some (number, name) -> Some { Number = number; Name = name.ToLower(); Price = parsePrice priceNode }
         | None -> None
     | _ -> None
 
