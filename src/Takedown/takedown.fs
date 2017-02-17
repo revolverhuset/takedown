@@ -13,16 +13,18 @@
 #load"HtmlAgilityPack.FSharp.fs"
 #endif
 
-open Newtonsoft.Json;
-open Newtonsoft.Json.Serialization;
-open Restaurants.Take
+namespace Takedown
+module Main =
+    open Newtonsoft.Json;
+    open Newtonsoft.Json.Serialization;
+    open Takedown.Restaurants
 
-let toJson x =
-   let settings = new JsonSerializerSettings ( ContractResolver = new CamelCasePropertyNamesContractResolver())
-   JsonConvert.SerializeObject(x, Formatting.Indented, settings)
+    let toJson x =
+        let settings = new JsonSerializerSettings ( ContractResolver = new CamelCasePropertyNamesContractResolver())
+        JsonConvert.SerializeObject(x, Formatting.Indented, settings)
 
-[<EntryPoint>]
-let main argv = 
-    let menu = takeDown () |> toJson
-    printfn "%s" menu
-    0 
+    [<EntryPoint>]
+    let main argv =
+        let menu = Take.takeDown () |> toJson
+        printfn "%s" menu
+        0 
