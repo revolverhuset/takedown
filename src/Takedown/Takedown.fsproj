@@ -8,7 +8,7 @@
     <Compile Include="Parsing.fs" />
     <Compile Include="Http.fs" />
     <Compile Include="HtmlAgilityPack.FSharp.fs" />
-    <Compile Include="Restaurant.Take.fs" />
+    <Compile Include="Restaurants.fs" />
     <Compile Include="Restaurant.Allehjornet.fs" />
     <Compile Include="takedown.fs" />
   </ItemGroup>
