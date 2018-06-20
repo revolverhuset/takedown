@@ -1,4 +1,5 @@
 module Parsing
+open System
 open System.Text.RegularExpressions;
 
 let (|Regex|_|) pattern input =
@@ -7,17 +8,14 @@ let (|Regex|_|) pattern input =
     else None
 
 let tryParseInt str =
-    match System.Int32.TryParse(str) with
+    match Int32.TryParse(str : string) with
     | (true, int) -> Some int
     | _ -> None
 
 let tryParseDecimal str =
-    match System.Decimal.TryParse(str) with
+    match Decimal.TryParse(str: string) with
     | (true, decimal) -> Some decimal
     | _ -> None
 
-let (|Int|_|) str = tryParseInt
-let (|Decimal|_|) str = tryParseDecimal
-
-let isNullOrEmpty s =  System.String.IsNullOrEmpty s
+let isNullOrEmpty s = String.IsNullOrEmpty s
 let hasContent s = not (isNullOrEmpty s)
