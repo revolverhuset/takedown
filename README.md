@@ -1,2 +1,7 @@
-* install https://github.com/dotnet/core/blob/master/release-notes/rc3-download.md
-* dotnet restore && dotnet run
+* dotnet core 2.1 or newer https://www.microsoft.com/net/download/windows
+```
+cd src/Takedown
+dotnet restore
+dotnet run
+```
+
