@@ -5,27 +5,27 @@
       {
         "number": 513,
         "name": "SALMON TEMPURA NIGIRI",
-        "price": 59.0
+        "price": 71.0
       },
       {
         "number": 515,
         "name": "EBI TEMPURA NIGIRI",
-        "price": 69.0
+        "price": 77.0
       },
       {
         "number": 517,
         "name": "ZUCCHINI TEMPURA NIGIRI",
-        "price": 49.0
+        "price": 51.0
       },
       {
         "number": 518,
         "name": "ASPARAGUS TEMPURA NIGIRI",
-        "price": 49.0
+        "price": 51.0
       },
       {
         "number": 519,
         "name": "CARROT TEMPURA NIGIRI",
-        "price": 49.0
+        "price": 51.0
       }
     ]
   },
@@ -35,17 +35,32 @@
       {
         "number": 605,
         "name": "AVO SALMON",
-        "price": 99.0
+        "price": 105.0
       },
       {
         "number": 606,
         "name": "AVO SHRIMP",
-        "price": 99.0
+        "price": 105.0
       },
       {
         "number": 607,
         "name": "AVO TUNA",
-        "price": 99.0
+        "price": 105.0
+      },
+      {
+        "number": 651,
+        "name": "AVO SCALLOP",
+        "price": 105.0
+      },
+      {
+        "number": 652,
+        "name": "AVO HALIBUT",
+        "price": 105.0
+      },
+      {
+        "number": 653,
+        "name": "AVO CRABSTICK",
+        "price": 105.0
       }
     ]
   },
@@ -55,22 +70,22 @@
       {
         "number": 608,
         "name": "SALMON TEMPURA ROLL",
-        "price": 99.0
+        "price": 115.0
       },
       {
         "number": 609,
         "name": "SHRIMP TEMPURA ROLL",
-        "price": 99.0
+        "price": 115.0
       },
       {
         "number": 610,
         "name": "HALIBUT TEMPURA ROLL",
-        "price": 99.0
+        "price": 115.0
       },
       {
         "number": 611,
         "name": "CRABSTICK TEMPURA ROLL",
-        "price": 99.0
+        "price": 115.0
       }
     ]
   },
@@ -80,32 +95,32 @@
       {
         "number": 612,
         "name": "CRISPY TENKAS SALMON ROLL",
-        "price": 109.0
+        "price": 115.0
       },
       {
         "number": 613,
         "name": "CRISPY TENKAS TUNA ROLL",
-        "price": 109.0
+        "price": 115.0
       },
       {
         "number": 614,
         "name": "CRISPY TENKAS HALIBUT ROLL",
-        "price": 109.0
+        "price": 115.0
       },
       {
         "number": 615,
         "name": "CRISPY TENKAS SCALLOP ROLL",
-        "price": 109.0
+        "price": 115.0
       },
       {
         "number": 616,
         "name": "CRISPY TENKAS SHRIMP ROLL",
-        "price": 109.0
+        "price": 115.0
       },
       {
         "number": 617,
         "name": "CRISPY TENKAS CRABSTICK ROLL",
-        "price": 109.0
+        "price": 115.0
       }
     ]
   },
@@ -115,32 +130,32 @@
       {
         "number": 618,
         "name": "PIRI KARA SALMON",
-        "price": 99.0
+        "price": 109.0
       },
       {
         "number": 619,
         "name": "PIRI KARA TUNA",
-        "price": 99.0
+        "price": 109.0
       },
       {
         "number": 620,
         "name": "PIRI KARA HALIBUT",
-        "price": 99.0
+        "price": 109.0
       },
       {
         "number": 621,
         "name": "PIRI KARA SCALLOP",
-        "price": 99.0
+        "price": 109.0
       },
       {
         "number": 622,
         "name": "PIRI KARA SHRIMP",
-        "price": 99.0
+        "price": 109.0
       },
       {
         "number": 623,
         "name": "PIRI KARA CRABSTICK",
-        "price": 99.0
+        "price": 109.0
       }
     ]
   },
@@ -150,32 +165,32 @@
       {
         "number": 624,
         "name": "GEKI KARA SALMON",
-        "price": 109.0
+        "price": 119.0
       },
       {
         "number": 625,
         "name": "GEKI KARA TUNA",
-        "price": 109.0
+        "price": 119.0
       },
       {
         "number": 626,
         "name": "GEKI KARA HALIBUT",
-        "price": 109.0
+        "price": 119.0
       },
       {
         "number": 627,
         "name": "GEKI KARA SCALLOP",
-        "price": 109.0
+        "price": 119.0
       },
       {
         "number": 628,
         "name": "GEKI KARA SHRIMP",
-        "price": 109.0
+        "price": 119.0
       },
       {
         "number": 629,
         "name": "GEKI KARA CRABSTICK",
-        "price": 109.0
+        "price": 119.0
       }
     ]
   },
@@ -185,26 +200,31 @@
       {
         "number": 639,
         "name": "BURNING SALMON",
-        "price": 119.0
+        "price": 129.0
       },
       {
         "number": 640,
         "name": "BURNING TUNA",
-        "price": 119.0
+        "price": 129.0
       },
       {
         "number": 641,
         "name": "BURNING SCALLOP",
-        "price": 119.0
+        "price": 129.0
       },
       {
         "number": 642,
         "name": "BURNING SHRIMP",
-        "price": 119.0
+        "price": 129.0
       },
       {
         "number": 643,
         "name": "BURNING OCEAN",
+        "price": 139.0
+      },
+      {
+        "number": 654,
+        "name": "BURNING HALIBUT",
         "price": 129.0
       }
     ]
@@ -215,32 +235,32 @@
       {
         "number": 644,
         "name": "GOLDEN SALMON ROLL",
-        "price": 119.0
+        "price": 129.0
       },
       {
         "number": 645,
         "name": "GOLDEN TUNA ROLL",
-        "price": 119.0
+        "price": 129.0
       },
       {
         "number": 646,
         "name": "GOLDEN SHRIMP ROLL",
-        "price": 119.0
+        "price": 129.0
       },
       {
         "number": 647,
         "name": "GOLDEN HAM ROLL",
-        "price": 119.0
+        "price": 0.0
       },
       {
         "number": 648,
         "name": "GOLDEN DUCK ROLL",
-        "price": 129.0
+        "price": 139.0
       },
       {
         "number": 649,
         "name": "GOLDEN BEEF ROLL",
-        "price": 129.0
+        "price": 139.0
       }
     ]
   },
@@ -250,47 +270,47 @@
       {
         "number": 630,
         "name": "KING OF CRAB",
-        "price": 139.0
+        "price": 149.0
       },
       {
         "number": 631,
         "name": "KING SPIDER ROLL",
-        "price": 139.0
+        "price": 149.0
       },
       {
         "number": 632,
         "name": "SALMON SUNRISE",
-        "price": 129.0
+        "price": 139.0
       },
       {
         "number": 633,
         "name": "THREE SACRED TREASURES",
-        "price": 129.0
+        "price": 0.0
       },
       {
         "number": 634,
         "name": "TUNA LUCHA LIBRE",
-        "price": 129.0
+        "price": 139.0
       },
       {
         "number": 635,
         "name": "BEIJING DUCK ROLL",
-        "price": 129.0
+        "price": 139.0
       },
       {
         "number": 636,
         "name": "COWBOY FISHERMAN",
-        "price": 139.0
+        "price": 149.0
       },
       {
         "number": 637,
         "name": "SPICY COWBOY FISHERMAN",
-        "price": 139.0
+        "price": 155.0
       },
       {
         "number": 638,
         "name": "OKINAWA ROLL",
-        "price": 129.0
+        "price": 139.0
       }
     ]
   },
@@ -300,32 +320,32 @@
       {
         "number": 201,
         "name": "MISO SOUP",
-        "price": 49.0
+        "price": 51.0
       },
       {
         "number": 202,
         "name": "SPICY MISO SOUP",
-        "price": 55.0
+        "price": 61.0
       },
       {
         "number": 203,
         "name": "KAISEN SEAFOOD MISO SOUP",
-        "price": 85.0
+        "price": 101.0
       },
       {
         "number": 204,
         "name": "SALMON MISO SOUP",
-        "price": 75.0
+        "price": 77.0
       },
       {
         "number": 205,
         "name": "SPICY KAISEN SEAFOOD MISO SOUP",
-        "price": 89.0
+        "price": 107.0
       },
       {
         "number": 206,
         "name": "SPICY SALMON MISO SOUP",
-        "price": 79.0
+        "price": 87.0
       }
     ]
   },
@@ -385,7 +405,7 @@
       {
         "number": 406,
         "name": "MIX SASHIMI",
-        "price": 269.0
+        "price": 285.0
       }
     ]
   },
@@ -395,47 +415,47 @@
       {
         "number": 503,
         "name": "SMOKED SALMON NIGIRI",
-        "price": 59.0
+        "price": 67.0
       },
       {
         "number": 504,
         "name": "TUNA NIGIRI",
-        "price": 59.0
+        "price": 67.0
       },
       {
         "number": 505,
         "name": "HALIBUT NIGIRI",
-        "price": 59.0
+        "price": 67.0
       },
       {
         "number": 506,
         "name": "BOILED SHRIMP",
-        "price": 59.0
+        "price": 67.0
       },
       {
         "number": 507,
         "name": "SCALLOP NIGIRI",
-        "price": 59.0
+        "price": 67.0
       },
       {
         "number": 509,
         "name": "GYU BEEF TATAKI NIGIRI",
-        "price": 69.0
+        "price": 71.0
       },
       {
         "number": 510,
         "name": "SPICY GYU BEEF TATAKI",
-        "price": 69.0
+        "price": 81.0
       },
       {
         "number": 511,
         "name": "INARI FRIED TOFU",
-        "price": 49.0
+        "price": 57.0
       },
       {
         "number": 512,
         "name": "TAMAGO OMELET NIGIRI",
-        "price": 49.0
+        "price": 57.0
       }
     ]
   },
@@ -445,22 +465,22 @@
       {
         "number": 601,
         "name": "GREEN EMERALD",
-        "price": 89.0
+        "price": 99.0
       },
       {
         "number": 602,
         "name": "CRISPY TENKAS EMERALD",
-        "price": 89.0
+        "price": 105.0
       },
       {
         "number": 603,
         "name": "BURNING EMERALD",
-        "price": 89.0
+        "price": 115.0
       },
       {
         "number": 604,
         "name": "GOLDEN EMERALD",
-        "price": 89.0
+        "price": 115.0
       }
     ]
   },
@@ -470,42 +490,42 @@
       {
         "number": 701,
         "name": "SHOJIN BENTO",
-        "price": 209.0
+        "price": 215.0
       },
       {
         "number": 702,
         "name": "SHOJIN SUSHI BENTO",
-        "price": 229.0
+        "price": 245.0
       },
       {
         "number": 703,
         "name": "MATSU BENTO",
-        "price": 269.0
+        "price": 305.0
       },
       {
         "number": 704,
         "name": "TAKE BENTO",
-        "price": 229.0
+        "price": 269.0
       },
       {
         "number": 705,
         "name": "UME BENTO",
-        "price": 209.0
+        "price": 229.0
       },
       {
         "number": 706,
         "name": "SALMON ALL STARS BENTO",
-        "price": 259.0
+        "price": 299.0
       },
       {
         "number": 707,
         "name": "SALMON ON FIRE BENTO",
-        "price": 159.0
+        "price": 189.0
       },
       {
         "number": 708,
         "name": "NIGIRI MORIAWASE BENTO",
-        "price": 239.0
+        "price": 269.0
       }
     ]
   },
@@ -515,31 +535,21 @@
       {
         "number": 801,
         "name": "DORAYAKI",
-        "price": 69.0
-      },
-      {
-        "number": 802,
-        "name": "DAIFUKU MOCHI",
-        "price": 69.0
+        "price": 79.0
       },
       {
         "number": 803,
         "name": "MATCHA ICE CREAM",
-        "price": 69.0
+        "price": 79.0
       },
       {
         "number": 804,
         "name": "KURO GOMA ICE CREAM",
-        "price": 69.0
+        "price": 79.0
       },
       {
         "number": 805,
         "name": "MOCHI ICE CREAM",
-        "price": 69.0
-      },
-      {
-        "number": 806,
-        "name": "TEMPURA MOCHI ICE CREAM",
         "price": 79.0
       }
     ]
@@ -550,27 +560,27 @@
       {
         "number": 901,
         "name": "HOUSE SOY SAUCE",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 903,
         "name": "PONZU SAUCE",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 905,
         "name": "SPICY MAYO",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 906,
         "name": "S(WEET) L(EMON) W(ASABI) MAYO",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 907,
         "name": "JALAPE MAYO",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 908,
@@ -580,27 +590,27 @@
       {
         "number": 909,
         "name": "GOCHU KIM SAUCE",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 910,
         "name": "MANGO SAUCE",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 911,
         "name": "TENTSUYU SAUCE",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 913,
         "name": "WASABI",
-        "price": 20.0
+        "price": 21.0
       },
       {
         "number": 914,
         "name": "GARI",
-        "price": 20.0
+        "price": 21.0
       }
     ]
   },
@@ -610,42 +620,42 @@
       {
         "number": 1007,
         "name": "CALPICO",
-        "price": 39.0
+        "price": 45.0
       },
       {
         "number": 1010,
         "name": "RAMUNE 0,2l",
-        "price": 49.0
+        "price": 52.0
       },
       {
         "number": 1021,
         "name": "SENCHA GREEN TEA",
-        "price": 30.0
+        "price": 36.0
       },
       {
         "number": 1022,
         "name": "ORGANIC SENCHA GREEN TEA",
-        "price": 35.0
+        "price": 40.0
       },
       {
         "number": 1023,
         "name": "GENMAI TEA",
-        "price": 30.0
+        "price": 40.0
       },
       {
         "number": 1024,
         "name": "HOJI TEA",
-        "price": 30.0
+        "price": 40.0
       },
       {
         "number": 1025,
         "name": "MATCHA GREEN TEA",
-        "price": 30.0
+        "price": 40.0
       },
       {
         "number": 1026,
         "name": "HOT MATCHA GREEN TEA LATTE",
-        "price": 35.0
+        "price": 49.0
       },
       {
         "number": 1043,
@@ -690,7 +700,7 @@
       {
         "number": 102,
         "name": "SPICY EDAMAME",
-        "price": 65.0
+        "price": 69.0
       },
       {
         "number": 103,
@@ -705,12 +715,12 @@
       {
         "number": 105,
         "name": "HAKUSAI KIMCHI",
-        "price": 49.0
+        "price": 55.0
       },
       {
         "number": 106,
         "name": "KARA AGE FRIED CHICKEN",
-        "price": 109.0
+        "price": 115.0
       },
       {
         "number": 107,
@@ -720,7 +730,7 @@
       {
         "number": 108,
         "name": "EBI FRIE",
-        "price": 109.0
+        "price": 115.0
       },
       {
         "number": 109,
@@ -746,11 +756,6 @@
         "number": 113,
         "name": "TEMPURA MORIAWASE",
         "price": 149.0
-      },
-      {
-        "number": 114,
-        "name": "AGE DASHI TOFU",
-        "price": 109.0
       },
       {
         "number": 115,
