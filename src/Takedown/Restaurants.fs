@@ -23,11 +23,20 @@ module Take =
     let mapMenuEntry node =
         let bs = node |> descendants "b" |> Seq.toList
         match bs with
+        | headerNode::priceNode::headerNode2::priceNode2::_ ->
+        [
+            (match mapMenuItemHeader headerNode with
+            | Some (number, name) -> Some { Number = number; Name = name; Price = parsePrice priceNode }
+            | None -> None);
+            (match mapMenuItemHeader headerNode2 with
+            | Some (number, name) -> Some { Number = number; Name = name; Price = parsePrice priceNode2 }
+            | None -> None)
+        ] |> Seq.choose id |> Seq.toList
         | headerNode::priceNode::_ ->
             match mapMenuItemHeader headerNode with
-            | Some (number, name) -> Some { Number = number; Name = name; Price = parsePrice priceNode }
-            | None -> None
-        | _ -> None
+            | Some (number, name) -> [ { Number = number; Name = name; Price = parsePrice priceNode } ] |> Seq.toList
+            | None -> [] |> Seq.toList
+        | _ -> [] |> Seq.toList
 
     let menuCategory node =
         let xpath = "//div[@class='box box_3']//div[@align='center']"
@@ -40,7 +49,11 @@ module Take =
         let menuItemNodes = node |> selectNodes xpath
         { 
             Category = menuCategory node
-            Entries =  menuItemNodes |> Seq.choose mapMenuEntry |> Seq.sortBy (fun x -> x.Number)
+            Entries =  
+                menuItemNodes
+                |> Seq.map mapMenuEntry
+                |> Seq.concat
+                |> Seq.sortBy (fun x -> x.Number)
         }
     
     let menyUrls doc = 

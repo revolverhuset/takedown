@@ -8,9 +8,19 @@
         "price": 71.0
       },
       {
+        "number": 514,
+        "name": "HALIBUT TEMPURA NIGIRI",
+        "price": 77.0
+      },
+      {
         "number": 515,
         "name": "EBI TEMPURA NIGIRI",
         "price": 77.0
+      },
+      {
+        "number": 516,
+        "name": "CRABSTICK TEMPURA NIGIRI",
+        "price": 61.0
       },
       {
         "number": 517,
@@ -413,6 +423,16 @@
     "category": "NIGIRI SUSHI / 2 biter",
     "entries": [
       {
+        "number": 501,
+        "name": "SAKE SALMON NIGIRI",
+        "price": 61.0
+      },
+      {
+        "number": 502,
+        "name": "TORO FATTY SALMON NIGIRI",
+        "price": 67.0
+      },
+      {
         "number": 503,
         "name": "SMOKED SALMON NIGIRI",
         "price": 67.0
@@ -436,6 +456,11 @@
         "number": 507,
         "name": "SCALLOP NIGIRI",
         "price": 67.0
+      },
+      {
+        "number": 508,
+        "name": "BOILED KING CRAB NIGIRI",
+        "price": 91.0
       },
       {
         "number": 509,
@@ -656,6 +681,11 @@
         "number": 1026,
         "name": "HOT MATCHA GREEN TEA LATTE",
         "price": 49.0
+      },
+      {
+        "number": 1042,
+        "name": "KIRIN ICHIBAN BEER 0,33l",
+        "price": 89.0
       },
       {
         "number": 1043,
