@@ -7,7 +7,7 @@ open Http;
 
 module Take =
     type MenuEntry = { Number : int; Name : string;  Price : decimal}
-    type MenuCategory = { Category : string; Entries : seq<MenuEntry> }
+    type MenuCategory = { Category : string; Entries : MenuEntry list }
 
     let mapMenuItemHeader (b : HtmlNode) =
         let inner =  b.InnerText.Trim();
@@ -54,6 +54,7 @@ module Take =
                 |> Seq.map mapMenuEntry
                 |> Seq.concat
                 |> Seq.sortBy (fun x -> x.Number)
+                |> Seq.toList
         }
     
     let menyUrls doc = 
@@ -67,10 +68,9 @@ module Take =
     let discover s = createDoc s |> menyUrls |> Seq.map relative
     let takeDown () = 
         let pages = crawl (relative "/meny/forretter/") discover
-        pages 
-            |> Seq.map (fun (_, doc) -> createDoc doc) 
-        |> Seq.map menuEntries
-
+        pages |> Seq.map (fun (_, doc) -> createDoc doc) 
+              |> Seq.map menuEntries
+              |> Seq.toList
 
 module Allehjornet =
 
