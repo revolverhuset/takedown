@@ -7,6 +7,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Takedown.Tests", "Takedown.
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Takedown", "Takedown\Takedown.fsproj", "{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Takedown.Web", "Takedown.Web\Takedown.Web.fsproj", "{AA7AEFB7-F66A-4DB0-8C6E-6BFE595A66A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D91EF0FA-D702-403C-99EA-0ADDD4BCE75F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7AEFB7-F66A-4DB0-8C6E-6BFE595A66A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7AEFB7-F66A-4DB0-8C6E-6BFE595A66A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7AEFB7-F66A-4DB0-8C6E-6BFE595A66A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7AEFB7-F66A-4DB0-8C6E-6BFE595A66A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
